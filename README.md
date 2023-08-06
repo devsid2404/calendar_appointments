@@ -1,9 +1,11 @@
 # Calendar Appointments
 
 
-## backend
-Node Js inversify
-
+## Backend
+Node Js
+Express
+Inversify
+Firestore
 
 ### Project Setup
 
