@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "calendar-appointments-d4393",
+  "private_key_id": "1dbe7e6f315ef7251f92fba365b099c8a5fa885e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDU/HFS+//PehxY\nFxgwdkgLDaas6UCRe2XzH3dvI06XQKtIJDloiuZDh19EGgzxyfSlWlj0UklM12N4\nbqR3wpUIkpYscHCeiNvOdZNOoHEK35b1/nY0OzPturgzUXuVe4iF/BRCh/SAfEkN\nMLbnQSH4ccx7BUVv/3rVTPL+pgI/EK/obm2VcRtl5jcA42wtB6DX5rbonLSOQ9T/\n70+zl4MMFYfze5MYHZgNqXkOvnXyV6tYdsC44/1ef9JDj6nUJH3oBPjHeS2ewVpq\nj3YWHgtVBl5zGCY+hzooCgzkpQOyncK2qtzxMuB/39D229tRy6SMP59lzY2FUVxf\nv32u5KWVAgMBAAECggEAB9FtwNO6k9LHVZMgx9lKUwrg57n218rwIW4x7noc+Wpd\n9IZNNoGFavcoz7wmZihj+undGA1+iVE4DS9VNDGH/PTnNExlpebKLW2dcaZsCoUj\nP8u5FQ5onT0HDpiFcSWZYP8G01u1kD3VBKSZd4BUOeVw0cHjcaAEJ0OYK9wg0FBr\nAnq92dKBDTFi7nXfsin2MQUj5xdaCdP3AfbQ+FS6y3YqHOMa8fIWmiVuHvMcTDVx\nIDI8SeOLoJkVpJd28Xf/8DRBzBqekGnTyvCaO3Q2rN4lgfe62Tf0wQvnqA4hhRud\n7D+eNpD+vdyl9w0HuadR1AmOIH4Klv7+LnvXthgDBQKBgQDyLHGzmcD41BgUqaet\nQsGDFsgTy2l3RxuzLvG6qAlTl+hX9Z1Bxly3HY2Ylh/fZqa78JVSKy1ZydL7FIrK\nfPfRKLhYkv/RP2WhuNiDZJnD9bZOBdW7QfWLjxAbD/A1JudpT8eledcCe3Fw/AYB\nhP2eeUNkdqDCTjwHpOYITs0ONwKBgQDhJWaA9JdjnyGoMTFfEPl+qk+9BPIig1oh\nHU8jjh+kUCQ5ESRSRYwuIpTy+4VynT3vetHO4bpzUufXCm+oFSHQBR9dFuG3/h+3\nejrrl9K6imT88MyQjoVXOvEAfCfjGA9GFYdUvw+I3V7kZIGhCxand+WwKdznDnof\neLEkSyhkkwKBgQCA5JjLr3zesvvyG24MMGiQXdK1fmEuw+EBWG3+G6uDG2nlTuuY\n83urVoZjfRuPqrH5e43uAt8LV/j7+633IdZAM30SX4LamvR7w8cw/507iA60rjRY\niz2mPsmirbP6hi9KhNTMxPFj99GkAe8sZd0auI3e7aiYYk1fACwSpeZLtwKBgDyD\nv/RjSZmWOQarCjkiJ906y6njfW13Xq9N4GqPFcQlYkcQa3HNjasM0noozqqKxw3q\nNiBkHahHnVb4UCCeZXMzHUX5E3xPypiXOuT97r8C2bf+xQ0JsZ9LkWFu/Y2Vdu2A\nddp6bCN+VLYQqaLuhw1GNa9O4TgddQemef5mURoPAoGBAIhrwlO/TKBxo/6TS4oc\neaHEr0MzO4jMffTgtflVB+jQZy6OPx9K1ZHX8FMa27bHzIHmhWghgt4zaWLwM1zS\nyE4Gm//s66jyHyV8nP8YmMtiUPhWodY7SDpX5HUYPrAik5zyZ1vqjJXx5QE7KSt3\nqjXU6wcrNbq0S/P3IzBs7PEt\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-er51w@calendar-appointments-d4393.iam.gserviceaccount.com",
+  "client_id": "107834744863434892609",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-er51w%40calendar-appointments-d4393.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
