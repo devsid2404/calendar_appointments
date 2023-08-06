@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "78aab8f3-5464-4127-b06b-49092497e34f",
+		"name": "Calendar appoinments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28968043"
+	},
+	"item": [
+		{
+			"name": "Test API",
+			"item": [
+				{
+					"name": "GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6000/api/testApi/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"api",
+								"testApi",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET TImeZone by country",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6000/api/testApi/getTimeZones?country=US",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"api",
+								"testApi",
+								"getTimeZones"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "US"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"sid\",\n    \"email\": \"sidnewsome@gmail.com\",\n    \"timeZoneOffset\": -420\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/api/user/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"api",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6000/api/user/get/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"api",
+								"user",
+								"get",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Free Slots",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"sid\",\n    \"email\": \"devsid@gmail.com\",\n    \"timeZoneOffset\": -240\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/api/user/availableSlots?id=zFUDbtzogBgmnxbE7ilD&date=09/08/2023&timeZoneOffset=330",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"api",
+								"user",
+								"availableSlots"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "zFUDbtzogBgmnxbE7ilD"
+								},
+								{
+									"key": "date",
+									"value": "09/08/2023"
+								},
+								{
+									"key": "timeZoneOffset",
+									"value": "330"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "Create Event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"zFUDbtzogBgmnxbE7ilD\",\n    \"timestamp\": \"2023-08-10T01:30:00+05:30\",\n    \"duration\": 30,\n    \"name\": \"some person\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/api/event/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"api",
+								"event",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"zFUDbtzogBgmnxbE7ilD\",\n    \"date\": \"\",\n    \"timeZoneOffset\": \"\",\n    \"duration\": 30\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/api/event/get/all?userId=zFUDbtzogBgmnxbE7ilD",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"api",
+								"event",
+								"get",
+								"all"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "zFUDbtzogBgmnxbE7ilD"
+								},
+								{
+									"key": "startDate",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
