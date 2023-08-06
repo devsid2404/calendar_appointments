@@ -18,6 +18,8 @@ Firestore
 
 ### API Endpoints
 
+Can use postman collection in backend folder => calendar_appointments.postman_collection.json
+
 * POST ((host))/api/user/create
     - Creates a new user to manage appointment timings
 
