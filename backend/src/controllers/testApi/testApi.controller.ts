@@ -5,16 +5,14 @@ import moment from "moment";
 @controller('/testApi')
 export default class InternalTestController {
 
-    @httpGet('/get')
-    public async get(
+    @httpGet('/healthCheck')
+    public async healthCheck(
         req,
         res,
         next
     ){
         try {
-
-            console.log('reached here');
-            res.json({message: 'Test Api running'})
+            res.json({message: 'Application running'})
         } catch (err) {
             next(err);
         }
@@ -27,8 +25,6 @@ export default class InternalTestController {
         next
     ){
         try {
-
-            console.log('reached here');
             res.json(moment.tz.zonesForCountry(req.query.country, true));
         } catch (err) {
             next(err);
