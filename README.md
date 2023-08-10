@@ -45,7 +45,7 @@ Can use postman collection in backend folder => calendar_appointments.postman_co
 
     ```bash
     src
-    ├── AppServer.ts
+    ├── AppServer.ts              # Application bootstrap
     ├── Symbols.ts
     ├── bind.ts
     ├── commons
@@ -59,13 +59,13 @@ Can use postman collection in backend folder => calendar_appointments.postman_co
     ├── components
     │   ├── events
     │   │   ├── event.interface.ts
-    │   │   ├── event.repository.ts
-    │   │   └── event.service.ts
+    │   │   ├── event.repository.ts # DB queries
+    │   │   └── event.service.ts    # Business logic
     │   └── users
     │       ├── user.interface.ts
-    │       ├── user.repository.ts
-    │       └── user.service.ts
-    ├── controllers
+    │       ├── user.repository.ts # DB queries
+    │       └── user.service.ts    # Business logic
+    ├── controllers                # API endpoints
     │   ├── event
     │   │   └── event.controller.ts
     │   ├── testApi
@@ -73,8 +73,7 @@ Can use postman collection in backend folder => calendar_appointments.postman_co
     │   └── user
     │       └── user.controller.ts
     ├── db
-    │   └── dataBaseConnection.ts
-    ├── index.ts
-    └── models
+    │   └── dataBaseConnection.ts 
+    ├── index.ts                   # Application start point
     ```
 
