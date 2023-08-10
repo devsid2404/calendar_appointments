@@ -18,6 +18,10 @@ Firestore
 
     - Run app in development env => ```npm run dev```
 
+    - Build ts file to js => ```nom run build```
+
+    - Build and run code for production => ```npm run start```
+
 ### API Endpoints
 
 Can use postman collection in backend folder => calendar_appointments.postman_collection.json
