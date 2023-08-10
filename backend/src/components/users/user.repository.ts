@@ -2,6 +2,7 @@ import { inject, injectable } from "inversify";
 import Symbols from "../../Symbols";
 import DatabaseConnection from "../../db/dataBaseConnection";
 import moment from "moment";
+import { IUser } from "./user.interface";
 
 
 
@@ -12,18 +13,21 @@ export default class UserRepository {
     private dbConnection: DatabaseConnection;
 
     public async create(parameters) {
-        const users = await this.dbConnection.getConnection().collection("users").add({
-            createdAt: moment().utc().toString(),
+       await this.dbConnection.getConnection().collection("users").add({
+            createdAt: moment().utc(),
             ...parameters
         });
     }
     
 
-    public async getAll() {
+    public async getAll():Promise<IUser[]> {
         const users = await this.dbConnection.getConnection().collection("users").get();
-        const responseArray: any = [];
+        const responseArray: IUser[] = [];
         users.forEach(userDoc => {
-            responseArray.push(userDoc.data());
+            responseArray.push({
+                id: userDoc.id,
+                ...userDoc.data(),
+                createdAt: moment(userDoc.data().createdAt).utc().toString()});
         });
         return responseArray;
     }

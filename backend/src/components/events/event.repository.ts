@@ -5,6 +5,7 @@ import { inject, injectable } from "inversify";
 import Symbols from "../../Symbols";
 import DatabaseConnection from "../../db/dataBaseConnection";
 import moment from "moment";
+import { IEvent } from "./event.interface";
 
 
 
@@ -16,7 +17,7 @@ export default class EventRepository {
 
     public async create(parameters) {
         await this.dbConnection.getConnection().collection("event").add({
-            createdAt: moment().utc().toString(),
+            createdAt: moment().utc(),
             ...parameters
         });
     }
@@ -31,11 +32,10 @@ export default class EventRepository {
         return responseArray;
     }
 
-
-    public async getByUserId(userId) {
+    public async getByUserId(userId: string):Promise<IEvent[]> {
         const event = await this.dbConnection.getConnection().collection("event")
-            .where('userId', '==', userId);
-        const responseArray: any = [];
+        .where('userId', '==', userId);
+        const responseArray: IEvent[] = [];
         await event.get().then((snapshot) => {
             snapshot.forEach(doc => {
                 responseArray.push(doc.data());
@@ -43,5 +43,4 @@ export default class EventRepository {
         });
         return responseArray;
     }
-
 }
