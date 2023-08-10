@@ -4,7 +4,7 @@ import { inject } from "inversify";
 import UserService from "../../components/users/user.service";
 import EventService from "../../components/events/event.service";
 import moment from "moment";
-import ValidationError from "../../commons/errors/validation.error";
+import ValidationError from "../../commons/errors/Validation.error";
 
 
 @controller('/event')

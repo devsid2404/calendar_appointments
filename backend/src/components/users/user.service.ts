@@ -6,8 +6,7 @@ import { availabilityEnd, availabilityStart, getTimeStampAlongWithTimeZone } fro
 import EventService from "../events/event.service";
 import { IFreeSlots, IUser } from "./user.interface";
 import DuplicateError from "../../commons/errors/Duplicate.error";
-import ValidationError from "../../commons/errors/validation.error";
-
+import ValidationError from "../../commons/errors/Validation.error";
 
 
 @injectable()
