@@ -12,7 +12,7 @@ Firestore
 * Node version => 16.X.X +
 
 * Commands
-    **```cd backend```
+    **bash```cd backend```
 
     **```npm ci```
 
