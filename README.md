@@ -28,29 +28,31 @@ Can use postman collection in backend folder => calendar_appointments.postman_co
 
 * Test API
 
-** Health Check
+    - Health Check
     url => http://localhost:6000/api/testApi/healthCheck
 
-** Get Time Zone offset based on country id
+    - Get Time Zone offset based on country id
     url => http://localhost:6000/api/testApi/getTimeZones?country=DE
     
 * User
-** Create new User
+
+    - Create new User
     url => POST http://localhost:6000/api/user/create
 
-** GET all Users
+    - GET all Users
     url => GET http://localhost:6000/api/user/get/all
 
-** Get Free slots for the user
+    - Get Free slots for the user
     url => GET http://localhost:6000/api/user/availableSlots?id=Z6lCvaxXYe4AGagW2Z9V&date=10/08/2023&timeZoneOffset=330
 
 * Event 
 
-** Create new event for the user
- url => POST http://localhost:6000/api/event/create
+    - Create new event for the user
+    url => POST http://localhost:6000/api/event/create
 
-** Get all Events for given user for a given time frame
+    - Get all Events for given user for a given time frame
     url => GET http://localhost:6000/api/event/get/all?userId=uyPkTNuLLlgcXKdCRRTS&startDate=09/08/2023&endDate=10/08/2023
+    
 ### Folder structure
 
     ```bash
