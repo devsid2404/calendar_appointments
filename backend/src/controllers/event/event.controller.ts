@@ -22,8 +22,8 @@ export default class EventController {
             const timestampToBook: any = moment(timestamp, 'YYYY-MM-DDTHH:mm:ssZ');
             const slots = await this.userService.getUserFreeSlots({ 
                 id: userId,
-                date: timestampToBook.format("DD/MM/YYYY"),
-                timeZoneOffset: timestampToBook._tzm
+                date: timestampToBook.utc().format('DD/MM/YYYY'),
+                timeZoneOffset: 0
             });
 
             const slotPresent = slots.some(slot => moment(slot.startTime).isSame(timestampToBook._i));
@@ -32,7 +32,7 @@ export default class EventController {
                 await this.eventService.createEvent({
                     userId, 
                     name,
-                    appointment: moment(timestampToBook).utc()
+                    appointment: moment(timestampToBook).utc().toISOString()
             });
             } else {
                 throw new ValidationError('Cannot find available slot');
@@ -52,7 +52,9 @@ export default class EventController {
                     return user;
                 });
             const eventForUser = await this.eventService.getAllEventsForUser(
-                req.query.userId
+                req.query.userId,
+                req.query.startDate,
+                req.query.endDate
                 );
             res.json({
                 success: true,

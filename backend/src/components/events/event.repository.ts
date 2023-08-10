@@ -17,7 +17,7 @@ export default class EventRepository {
 
     public async create(parameters) {
         await this.dbConnection.getConnection().collection("event").add({
-            createdAt: moment().utc(),
+            createdAt: moment().utc().toISOString(),
             ...parameters
         });
     }
@@ -32,13 +32,19 @@ export default class EventRepository {
         return responseArray;
     }
 
-    public async getByUserId(userId: string):Promise<IEvent[]> {
+    public async getByUserId(userId: string, startDate?: string, endDate?: string):Promise<IEvent[]> {
         const event = await this.dbConnection.getConnection().collection("event")
-        .where('userId', '==', userId);
+        .where('userId', '==', userId)
+        .where('appointment', '>=', moment.utc(startDate, "DD/MM/YYYY").toISOString())
+        .where('appointment', '<=', moment.utc(endDate, "DD/MM/YYYY").toISOString());
         const responseArray: IEvent[] = [];
         await event.get().then((snapshot) => {
             snapshot.forEach(doc => {
-                responseArray.push(doc.data());
+                responseArray.push({
+                    ...doc.data(),
+                    createdAt: moment(doc.data().createdAt).utc().toString(),
+                    appointment: moment(doc.data().appointment).utc().toString(),
+                });
             });
         });
         return responseArray;

@@ -60,7 +60,11 @@ export default class UserService {
         let slotStartTime = moment(userAvailabilityStart);
         let slotEndTime = moment(slotStartTime).add(30, 'minutes');
 
-        const allEventsForUser = await this.eventService.getAllEventsForUserHashMap(id);
+        const allEventsForUser = await this.eventService.getAllEventsForUserHashMap(
+            id,
+            moment(date, "DD/MM/YYYY"),
+            moment(date, "DD/MM/YYYY").add(2, 'd')
+        );
 
         while(slotStartTime.isBefore(userAvailabilityEnd)) {
             const startTime = moment(slotStartTime).utcOffset(parseInt(timeZoneOffset)).format('YYYY-MM-DDTHH:mm:ssZ');

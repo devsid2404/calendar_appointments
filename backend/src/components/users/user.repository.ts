@@ -14,7 +14,7 @@ export default class UserRepository {
 
     public async create(parameters) {
        await this.dbConnection.getConnection().collection("users").add({
-            createdAt: moment().utc(),
+            createdAt: moment().utc().toISOString(),
             ...parameters
         });
     }
@@ -26,8 +26,8 @@ export default class UserRepository {
         users.forEach(userDoc => {
             responseArray.push({
                 id: userDoc.id,
-                ...userDoc.data(),
-                createdAt: moment(userDoc.data().createdAt).utc().toString()});
+                ...userDoc.data()
+            });
         });
         return responseArray;
     }
