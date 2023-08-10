@@ -12,11 +12,11 @@ Firestore
 * Node version => 16.X.X +
 
 * Commands
-    **```bash cd backend```
+    - In the root project folder => ```cd backend```
 
-    **```npm ci```
+    - Install dependencies => ```npm ci```
 
-    **```npm run dev```
+    - Run app in development env => ```npm run dev```
 
 ### API Endpoints
 
