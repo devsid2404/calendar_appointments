@@ -35,3 +35,40 @@ Can use postman collection in backend folder => calendar_appointments.postman_co
     - get all events for a give user
 
 
+### Folder structure
+
+    ```bash
+    src
+    ├── AppServer.ts
+    ├── Symbols.ts
+    ├── bind.ts
+    ├── commons
+    │   ├── errors
+    │   │   ├── Duplicate.error.ts
+    │   │   ├── Validation.error.ts
+    │   │   └── errorMapping.ts
+    │   ├── logger
+    │   │   └── logger.ts
+    │   └── time.ts
+    ├── components
+    │   ├── events
+    │   │   ├── event.interface.ts
+    │   │   ├── event.repository.ts
+    │   │   └── event.service.ts
+    │   └── users
+    │       ├── user.interface.ts
+    │       ├── user.repository.ts
+    │       └── user.service.ts
+    ├── controllers
+    │   ├── event
+    │   │   └── event.controller.ts
+    │   ├── testApi
+    │   │   └── testApi.controller.ts
+    │   └── user
+    │       └── user.controller.ts
+    ├── db
+    │   └── dataBaseConnection.ts
+    ├── index.ts
+    └── models
+    ```
+
