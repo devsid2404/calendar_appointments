@@ -26,21 +26,31 @@ Firestore
 
 Can use postman collection in backend folder => calendar_appointments.postman_collection.json
 
-* POST ((host))/api/user/create
-    - Creates a new user to manage appointment timings
+* Test API
 
-* GET ((host))/api/user/get/all
+** Health Check
+    url => http://localhost:6000/api/testApi/healthCheck
 
-* GET ((host))/api/user/availableSlots
-    - Get all available slots to book based on the given offset timezone
+** Get Time Zone offset based on country id
+    url => http://localhost:6000/api/testApi/getTimeZones?country=DE
+    
+* User
+** Create new User
+    url => POST http://localhost:6000/api/user/create
 
-* POST ((host))/api/event/create
-    - Create a new event of a given user
+** GET all Users
+    url => GET http://localhost:6000/api/user/get/all
 
-* GET ((host))/api/event/get/all
-    - get all events for a give user
+** Get Free slots for the user
+    url => GET http://localhost:6000/api/user/availableSlots?id=Z6lCvaxXYe4AGagW2Z9V&date=10/08/2023&timeZoneOffset=330
 
+* Event 
 
+** Create new event for the user
+ url => POST http://localhost:6000/api/event/create
+
+** Get all Events for given user for a given time frame
+    url => GET http://localhost:6000/api/event/get/all?userId=uyPkTNuLLlgcXKdCRRTS&startDate=09/08/2023&endDate=10/08/2023
 ### Folder structure
 
     ```bash
