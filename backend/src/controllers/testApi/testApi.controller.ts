@@ -25,7 +25,8 @@ export default class InternalTestController {
         next
     ){
         try {
-            res.json(moment.tz.zonesForCountry(req.query.country, true));
+            const timezones = moment.tz.zonesForCountry(req.query.country, true).map(timeZone => ({ name: timeZone.name, offset: -timeZone.offset}));
+            res.json({success: true, data: timezones});
         } catch (err) {
             next(err);
         }

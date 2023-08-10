@@ -1,10 +1,10 @@
 import { controller, httpGet, httpPost } from "inversify-express-utils";
 import Symbols from "../../Symbols";
-import * as express from 'express';
 import { inject } from "inversify";
 import UserService from "../../components/users/user.service";
 import EventService from "../../components/events/event.service";
 import moment from "moment";
+import ValidationError from "../../commons/errors/validation.error";
 
 
 @controller('/event')
@@ -32,28 +32,34 @@ export default class EventController {
                 await this.eventService.createEvent({
                     userId, 
                     name,
-                    appointment: moment(timestampToBook).utc().toString()
+                    appointment: moment(timestampToBook).utc()
             });
-        } else {
-            throw new Error('Cannot find available slot');
-        }
+            } else {
+                throw new ValidationError('Cannot find available slot');
+            }
             res.json({success: true});
         } catch (err: any) {
-            res.status(400).json({message : err.message});
+            next(err);
         }
     }
 
     @httpGet('/get/all')
     public async fetchAllEvents(req, res, next) {
         try {
-            const eventForUser = await this.eventService.getAllEventsForUser(req.query.userId);
+            const user = await this.userService.getOneById(req.query.userId)
+                .then(user => {
+                    if(!user) throw new ValidationError('Cannot find given user');
+                    return user;
+                });
+            const eventForUser = await this.eventService.getAllEventsForUser(
+                req.query.userId
+                );
             res.json({
                 success: true,
                 data: eventForUser
             });
         } catch (err) {
-            console.log('err===>', err);
-            res.status(400).json({message : ''});
+            next(err);
         }
     }
 

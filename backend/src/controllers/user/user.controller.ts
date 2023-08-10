@@ -14,9 +14,9 @@ export default class UserController {
     public async createUser(req, res, next) {
         try {
             await this.userService.create(req.body);
-            res.json({success: true});
-        } catch (err: any) {
-            res.status(400).json({message : err.message});
+            res.json({success: true, data: { message: "New user created successfully"}});
+        } catch (err) {
+            next(err);
         }
     }
 
@@ -29,8 +29,7 @@ export default class UserController {
                 data: users
             });
         } catch (err) {
-            console.log('err===>', err);
-            res.status(400).json({message : ''});
+            next(err);
         }
     }
 
