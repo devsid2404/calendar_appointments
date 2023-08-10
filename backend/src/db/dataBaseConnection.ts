@@ -1,5 +1,6 @@
 import admin from 'firebase-admin';
 import { injectable } from 'inversify';
+import { logger } from '../commons/logger/logger';
 
 @injectable()
 export default class DatabaseConnection {
@@ -15,7 +16,7 @@ export default class DatabaseConnection {
             credential: admin.credential.cert(credentials)
         });
         this.db = admin.firestore();
-        console.log('Db connected Successfully');    
+        logger.info('Db connected Successfully');
     }
 
     public getConnection = () => this.db;

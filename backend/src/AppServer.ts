@@ -7,6 +7,7 @@ import { InversifyExpressServer } from "inversify-express-utils";
 import Service_Identifier from "./Symbols";
 import DatabaseConnection from "./db/dataBaseConnection";
 import { API_ERROR_STATUS_CODE } from "./commons/errors/errorMapping";
+import { logger } from "./commons/logger/logger";
 
 export default class AppServer {
     private container: Container;
@@ -26,7 +27,7 @@ export default class AppServer {
             app.use(bodyParser.json());
             app.use(bodyParser.urlencoded({extended: true}));
             app.use((req, res, next) => {
-                console.log('API---->', req.url);
+                logger.info(req.url);
                 next();
             });
             app.disable('x-powered-by');
@@ -37,7 +38,7 @@ export default class AppServer {
     private async setApiErrorConfig(): Promise<void> {
         this.expressServer.setErrorConfig(app => {
             app.use((err, req, res, next) => {
-                console.log('API error--->', err);
+                logger.error(err, 'API ERROR');
                 const statusCode = API_ERROR_STATUS_CODE[err.name] || 500;
                 res.status(statusCode).json({
                     success: false,
@@ -52,7 +53,7 @@ export default class AppServer {
     private async startServer():Promise<void>{
         const app = this.expressServer.build();
         this.httpServer = await app.listen(process.env.PORT);
-        console.log(`Application up at ${process.env.PORT}`);
+        logger.info(`Application up at ${process.env.PORT}`);
     }
 
     public async start():Promise<void> {
@@ -62,10 +63,10 @@ export default class AppServer {
             await this.container.get<DatabaseConnection>(Service_Identifier.DatabaseConnection).intConnection();
             await this.startServer();
             await this.gracefulShutdownServer();
-            console.log('Application bootstrap complete');
+            logger.info('Application bootstrap complete');
         } catch (err) {
-            console.log('ERROR--->', err);
-            console.log('Shuting down application');
+            logger.error(err);
+            logger.error('Shuting down application');
             this.shutdownHttpServer();
         }
     }
@@ -73,14 +74,14 @@ export default class AppServer {
     private async gracefulShutdownServer():Promise<void>{
         process.on('SIGTERM', () => {
             if (this.httpServer) {
-                console.log('Shuting down http server');
+                logger.error('Shuting down http server');
                 this.httpServer.close();
             }
         });
 
         process.on('SIGINT', () => {
             if (this.httpServer) {
-                console.log('Shuting down http server');
+                logger.error('Shuting down http server');
                 this.httpServer.close();
             }
         });
@@ -88,7 +89,7 @@ export default class AppServer {
 
     private shutdownHttpServer() {
         if (this.httpServer) {
-            console.log('Shuting down http server');
+            logger.error('Shuting down http server');
             this.httpServer.close();
         }
     }
