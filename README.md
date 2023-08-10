@@ -12,9 +12,9 @@ Firestore
 * Node version => 16.X.X +
 
 * Commands
-    - cd backend
-    - npm ci
-    - npm run dev
+    ```cd backend```
+    ```npm ci```
+    ```npm run dev```
 
 ### API Endpoints
 
