@@ -1,10 +1,12 @@
-import { Container, inject } from "inversify";
+import { Container} from "inversify";
+import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { Server } from 'http';
 import { bind }from "./bind";
 import { InversifyExpressServer } from "inversify-express-utils";
 import Service_Identifier from "./Symbols";
 import DatabaseConnection from "./db/dataBaseConnection";
+import { API_ERROR_STATUS_CODE } from "./commons/errors/errorMapping";
 
 export default class AppServer {
     private container: Container;
@@ -20,11 +22,31 @@ export default class AppServer {
     }
 
     private async addMiddleware():Promise<void> { 
-        this.expressServer.setConfig(app => {
+        this.expressServer.setConfig((app: express.Application) => {
             app.use(bodyParser.json());
             app.use(bodyParser.urlencoded({extended: true}));
+            app.use((req, res, next) => {
+                console.log('API---->', req.url);
+                next();
+            });
             app.disable('x-powered-by');
         });
+        this.setApiErrorConfig();
+    }
+
+    private async setApiErrorConfig(): Promise<void> {
+        this.expressServer.setErrorConfig(app => {
+            app.use((err, req, res, next) => {
+                console.log('API error--->', err);
+                const statusCode = API_ERROR_STATUS_CODE[err.name] || 500;
+                res.status(statusCode).json({
+                    success: false,
+                    data: {
+                        message: err.message
+                    }
+                });
+            });
+        })
     }
 
     private async startServer():Promise<void>{
@@ -38,7 +60,6 @@ export default class AppServer {
             await bind(this.container);
             await this.addMiddleware();
             await this.container.get<DatabaseConnection>(Service_Identifier.DatabaseConnection).intConnection();
-            // await this.databaseConnection?.intConnection();
             await this.startServer();
             await this.gracefulShutdownServer();
             console.log('Application bootstrap complete');
@@ -70,7 +91,6 @@ export default class AppServer {
             console.log('Shuting down http server');
             this.httpServer.close();
         }
-
     }
 
 
