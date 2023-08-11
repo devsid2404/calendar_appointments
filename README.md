@@ -18,7 +18,7 @@ Firestore
 
     - Run app in development env => ```npm run dev```
 
-    - Build ts file to js => ```nom run build```
+    - Build ts file to js => ```npm run build```
 
     - Build and run code for production => ```npm run start```
 
